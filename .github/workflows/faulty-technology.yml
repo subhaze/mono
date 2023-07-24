@@ -1,0 +1,23 @@
+name: Preview::faulty.technology
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  faulty-technology_preview:
+    name: 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm ci
+      - uses: ./.github/actions/vercel
+        with:
+          working-directory: ./apps/faulty-technology
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-scope: ${{ vars.VERCEL_SCOPE }}
+          vercel-project: faulty-technology
+          vercel-environment: preview
+          node-version: 18

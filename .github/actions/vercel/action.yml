@@ -1,0 +1,105 @@
+name: Deploy to Vercel
+description: Simple Github Action that will deploy prebuilt artifacts to Vercel
+
+inputs:
+  vercel-token:
+    required: true
+    description: The Vercel token that has write access to the project you want to deploy
+    type: string
+  vercel-scope:
+    required: true
+    description: The team scope you wish to deploy to, if you're not part of a team, it'll be your user slug
+    type: string
+  vercel-project:
+    required: true
+    description: The slug of the project you want to deploy to
+    type: string
+  vercel-environment:
+    description: The project environment to pull; must be one of <production | preview | development>
+    type: string
+    default: preview
+  vercel-production-deploy:
+    description: If true, the vercel production env will be pulled and the `--prod` flag used for the deployment.
+    type: boolean
+    default: false
+  working-directory:
+    description: The directory from where the deployment shoudl happen
+    default: "."
+    type: string
+  node-version:
+    description: The version of node to setup.
+    default: 18
+    type: number
+outputs:
+  deployment-url:
+    description: The URL to access the newly deployed site
+    value: ${{ steps.vercel_deploy.outputs.deployment-url }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: "Setup node"
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ inputs.node-version }}
+    
+    - name: "Vercel: Link project"
+      working-directory: ${{ inputs.working-directory }}
+      shell: bash
+      run: npx -y vercel link -p ${{ inputs.vercel-project }} --scope ${{ inputs.vercel-scope }} --token ${{ inputs.vercel-token }} --yes
+    
+    - name: "Vercel: Pull environment"
+      working-directory: ${{ inputs.working-directory }}
+      shell: bash
+      run: npx -y vercel pull --environment ${{ inputs.vercel-environment }} --token ${{ inputs.vercel-token }} --yes
+    
+    - name: "Vercel: build"
+      working-directory: ${{ inputs.working-directory }}
+      shell: bash
+      run: |
+        args=(
+          build
+        )
+        if [ ${{ inputs.vercel-production-deploy }} == "true" ]; then
+            args+=(--prod)
+        fi
+        npx -y vercel "${args[@]}"
+    
+    - name: "Vercel: deploy"
+      id: vercel_deploy
+      working-directory: ${{ inputs.working-directory }}
+      shell: bash
+      run: |
+        args=(
+          deploy
+          --prebuilt
+          --token ${{ inputs.vercel-token }}
+          --scope ${{ inputs.vercel-scope }}
+          --yes
+        )
+        if [ ${{ inputs.vercel-production-deploy }} == "true" ]; then
+            args+=(--prod)
+        fi
+        echo "deployment-url=$(npx -y vercel ${args[@]})" >> "$GITHUB_OUTPUT"
+    - name: "Vercel: alias setup"
+      if: ${{ inputs.vercel-alias != "" }}
+      working-directory: ${{ inputs.working-directory }}
+      shell: bash
+      run: |
+        args=(
+          alias
+          set
+          ${{ steps.vercel_deploy.outputs.deploy-url }}
+          ${{ inputs.vercel-alias }}
+          --token ${{ inputs.vercel-token }}
+          --scope ${{ inputs.vercel-scope }}
+          --yes
+        )
+        if [ ${{ inputs.vercel-production-deploy }} == "true" ]; then
+            args+=(--prod)
+        fi
+        echo "deployment-url=$(npx -y vercel ${args[@]})" >> "$GITHUB_OUTPUT"
+
+
+
+    
