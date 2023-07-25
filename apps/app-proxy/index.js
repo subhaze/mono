@@ -6,30 +6,15 @@ const httpProxy = require("http-proxy");
 const appProxy = httpProxy.createProxyServer();
 
 const PORT = process.env.PORT ?? 8443;
+const BASE_DOMAIN = process.env.BASE_DOMAIN || '127local.host';
 
-const rootServer = "http://localhost:3001",
-	apiServer = "http://localhost:3002",
-	routeServer = "http://localhost:3003";
+const appDomain = new Map();
 
-const appDomains = {
-	"faulty-technology.127local.host": "http://localhost:3000",
-	"asocial-network.127local.host": "http://localhost:3001",
-};
-
-app.get("/route*", function (req, res) {
-	appProxy.web(req, res, { target: routeServer });
-});
-
-app.get("/api*", function (req, res) {
-	appProxy.web(req, res, { target: apiServer });
-});
-
-app.post("/api*", function (req, res) {
-	appProxy.web(req, res, { target: apiServer });
-});
+appDomain.set(`faulty-technology.${BASE_DOMAIN}:${PORT}`, `http://localhost:3000`);
+appDomain.set(`asocial-network.${BASE_DOMAIN}:${PORT}`, `http://localhost:3001`)
 
 app.get("/*", function (req, res) {
-	const domain = appDomains[`${req.headers.host}`.replace(`:${PORT}`, '')];
+	const domain = appDomain.get(req.headers.host);
 	if (domain) {
 		appProxy.web(req, res, { target: domain });
 	} else {
@@ -45,5 +30,5 @@ https
 		app
 	)
 	.listen(PORT, () => {
-		console.log("server is runing at port 4000");
+		console.log("server is running at port 4000");
 	});

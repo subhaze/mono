@@ -1,23 +1,41 @@
-name: Preview::faulty.technology
+name: Preview/faulty.technology
 
 on:
   workflow_dispatch: {}
+  push:
+    paths:
+    - 'apps/faulty-technology/**'
 
 jobs:
-  faulty-technology_preview:
-    name: 
+  faulty-technology-preview:
+    name: faulty.technology - preview
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Cache turbo build setup
+        uses: actions/cache@v3
+        with:
+          path: .turbo
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
+      - name: Setup node
+        uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: npm ci
-      - uses: ./.github/actions/vercel
+          cache: 'npm'
+      - name: Clean install
+        run: npm ci
+      - name: Build
+        run: npm run build -- --filter=faulty-technology
+      - name: Deploy preview
+        uses: ./.github/actions/vercel
         with:
           working-directory: ./apps/faulty-technology
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-scope: ${{ vars.VERCEL_SCOPE }}
+          vercel-scope: subhaze
           vercel-project: faulty-technology
           vercel-environment: preview
           node-version: 18
