@@ -22,6 +22,10 @@ inputs:
     description: If true, the vercel production env will be pulled and the `--prod` flag used for the deployment.
     type: boolean
     default: false
+  vercel-alias:
+    description: WIP
+    type: string
+    default: ""
   working-directory:
     description: The directory from where the deployment shoudl happen
     default: "."
@@ -42,17 +46,17 @@ runs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ inputs.node-version }}
-    
+
     - name: "Vercel: Link project"
       working-directory: ${{ inputs.working-directory }}
       shell: bash
       run: npx -y vercel link -p ${{ inputs.vercel-project }} --scope ${{ inputs.vercel-scope }} --token ${{ inputs.vercel-token }} --yes
-    
+
     - name: "Vercel: Pull environment"
       working-directory: ${{ inputs.working-directory }}
       shell: bash
       run: npx -y vercel pull --environment ${{ inputs.vercel-environment }} --token ${{ inputs.vercel-token }} --yes
-    
+
     - name: "Vercel: build"
       working-directory: ${{ inputs.working-directory }}
       shell: bash
@@ -64,7 +68,7 @@ runs:
             args+=(--prod)
         fi
         npx -y vercel "${args[@]}"
-    
+
     - name: "Vercel: deploy"
       id: vercel_deploy
       working-directory: ${{ inputs.working-directory }}
@@ -99,7 +103,3 @@ runs:
             args+=(--prod)
         fi
         echo "deployment-url=$(npx -y vercel ${args[@]})" >> "$GITHUB_OUTPUT"
-
-
-
-    
