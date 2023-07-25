@@ -86,7 +86,7 @@ runs:
         fi
         echo "deployment-url=$(npx -y vercel ${args[@]})" >> "$GITHUB_OUTPUT"
     - name: "Vercel: alias setup"
-      if: ${{ inputs.vercel-alias != "" }}
+      if: inputs.vercel-alias != ""
       working-directory: ${{ inputs.working-directory }}
       shell: bash
       run: |
