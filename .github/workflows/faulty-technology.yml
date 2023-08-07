@@ -40,6 +40,8 @@ jobs:
           vercel-environment: preview
           node-version: 18
   faulty-technology-production:
+    needs:
+      - faulty-technology-preview
     name: faulty.technology - production
     runs-on: ubuntu-latest
     environment: production
