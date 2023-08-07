@@ -4,7 +4,7 @@ on:
   workflow_dispatch: {}
   push:
     paths:
-    - 'apps/faulty-technology/**'
+      - "apps/faulty-technology/**"
 
 jobs:
   faulty-technology-preview:
@@ -25,7 +25,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: 'npm'
+          cache: "npm"
       - name: Clean install
         run: npm ci
       - name: Build
@@ -38,4 +38,37 @@ jobs:
           vercel-scope: subhaze
           vercel-project: faulty-technology
           vercel-environment: preview
+          node-version: 18
+  faulty-technology-production:
+    name: faulty.technology - production
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Cache turbo build setup
+        uses: actions/cache@v3
+        with:
+          path: .turbo
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "npm"
+      - name: Clean install
+        run: npm ci
+      - name: Build
+        run: npm run build -- --filter=faulty-technology
+      - name: Deploy Production
+        uses: ./.github/actions/vercel
+        with:
+          working-directory: ./apps/faulty-technology
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-scope: subhaze
+          vercel-project: faulty-technology
+          vercel-environment: production
           node-version: 18
