@@ -17,9 +17,9 @@ export default function Home() {
 				</blockquote>
 
 				<p>
-					Don't fear failure, don't fear risk, in the end, we're all{" "}
-					<cite>Faulty Technology</cite>, embrace it, move forward, and savor
-					every moment.
+					Don&apos;t fear failure, don&apos;t fear risk, in the end, we&apos;re
+					all <cite>Faulty Technology</cite>, embrace it, move forward, and
+					savor every moment.
 				</p>
 			</main>
 		</div>
