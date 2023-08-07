@@ -74,3 +74,4 @@ jobs:
           vercel-project: faulty-technology
           vercel-environment: production
           node-version: 18
+          vercel-production-deploy: true
