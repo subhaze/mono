@@ -1,48 +1,27 @@
 import { Metadata } from "next";
-import { Button, Card } from "ui";
-
-const CARD_CONTENT = [
-  {
-    title: "Caching Tasks",
-    href: "https://turbo.build/repo/docs/core-concepts/caching",
-    cta: "Read More",
-  },
-  {
-    title: "Running Tasks",
-    href: "https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks",
-    cta: "Read More",
-  },
-  {
-    title: "Configuration Options",
-    href: "https://turbo.build/repo/docs/reference/configuration",
-    cta: "Read More",
-  },
-];
 
 export const metadata: Metadata = {
-  title: "Web - Turborepo Example",
+	title: "We're all Faulty Technology, and it's okay",
 };
 
 export default function Home() {
-  return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
-      <main className="mx-auto w-auto px-4 pt-16 pb-8 sm:pt-24 lg:px-8">
-        <h1 className="mx-auto text-center text-6xl font-extrabold tracking-tight text-white sm:text-7xl lg:text-8xl xl:text-8xl">
-          Web
-          <span className="block bg-gradient-to-r from-brandred to-brandblue bg-clip-text text-transparent px-2">
-            Turborepo Example
-          </span>
-        </h1>
-        <div className="mx-auto mt-5 max-w-xl sm:flex sm:justify-center md:mt-8">
-          <Button />
-        </div>
+	return (
+		<div className="relative my-8 w-full rounded-sm bg-slate-100 px-6 py-12 shadow-xl shadow-slate-700/10 ring-1 ring-gray-900/5 dark:bg-slate-900 md:mx-auto md:max-w-3xl lg:max-w-4xl lg:pb-28 lg:pt-16">
+			<main className="prose dark:prose-invert prose-slate lg:prose-lg mx-auto">
+				<h1>Faulty Technology</h1>
 
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 place-content-evenly">
-          {CARD_CONTENT.map((card) => (
-            <Card key={card.title} {...card} />
-          ))}
-        </div>
-      </main>
-    </div>
-  );
+				<blockquote>
+					<p>Success is sometimes the outcome of a whole string of failures.</p>
+
+					<footer>&mdash; Vincent Van Gogh</footer>
+				</blockquote>
+
+				<p>
+					Don't fear failure, don't fear risk, in the end, we're all{" "}
+					<cite>Faulty Technology</cite>, embrace it, move forward, and savor
+					every moment.
+				</p>
+			</main>
+		</div>
+	);
 }

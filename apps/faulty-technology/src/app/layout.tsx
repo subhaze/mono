@@ -3,13 +3,16 @@ import "../styles/globals.css";
 import "ui/styles.css";
 
 export default function RootLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode;
+	children: React.ReactNode;
 }) {
-  return (
-    <html lang="en" className="bg-zinc-900">
-      <body>{children}</body>
-    </html>
-  );
+	return (
+		<html lang="en">
+			<body className="bg-slate-50 dark:bg-slate-950 px-6 lg:px-0">
+				<div className="background absolute inset-0" />
+				{children}
+			</body>
+		</html>
+	);
 }
