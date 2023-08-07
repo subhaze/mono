@@ -1,4 +1,4 @@
-name: Preview/faulty.technology
+name: Deploy/faulty.technology
 
 on:
   workflow_dispatch: {}
