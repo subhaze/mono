@@ -5,35 +5,27 @@ inputs:
   vercel-token:
     required: true
     description: The Vercel token that has write access to the project you want to deploy
-    type: string
   vercel-scope:
     required: true
     description: The team scope you wish to deploy to, if you're not part of a team, it'll be your user slug
-    type: string
   vercel-project:
     required: true
     description: The slug of the project you want to deploy to
-    type: string
   vercel-environment:
     description: The project environment to pull; must be one of <production | preview | development>
-    type: string
     default: preview
   vercel-production-deploy:
     description: If true, the vercel production env will be pulled and the `--prod` flag used for the deployment.
-    type: boolean
-    default: false
+    default: "false"
   vercel-alias:
     description: WIP
-    type: string
     default: ""
   working-directory:
-    description: The directory from where the deployment shoudl happen
+    description: The directory from where the deployment should happen
     default: "."
-    type: string
   node-version:
     description: The version of node to setup.
-    default: 18
-    type: number
+    default: "18"
 outputs:
   deployment-url:
     description: The URL to access the newly deployed site
