@@ -1,8 +1,9 @@
 import { Metadata } from "next";
-import { CSSProperties } from "react";
 
 export const metadata: Metadata = {
 	title: "We're all Faulty Technology, and it's okay.",
+	description:
+		"Don't fear failure, in the end, we're all Faulty Technology, embrace it, and move forward.",
 };
 
 export default function Home() {
