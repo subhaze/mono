@@ -28,8 +28,8 @@ jobs:
           cache: "npm"
       - name: Clean install
         run: npm ci
-      - name: Build
-        run: npm run build -- --filter=faulty-technology
+      # - name: Build
+      #   run: npm run build -- --filter=faulty-technology
       - name: Deploy preview
         uses: ./.github/actions/vercel
         with:
@@ -63,8 +63,8 @@ jobs:
           cache: "npm"
       - name: Clean install
         run: npm ci
-      - name: Build
-        run: npm run build -- --filter=faulty-technology
+      # - name: Build
+      #   run: npm run build -- --filter=faulty-technology
       - name: Deploy Production
         uses: ./.github/actions/vercel
         with:
