@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
 	return (
-		<div className="relative my-8 w-full rounded-sm  bg-slate-100/40 px-6 py-12 shadow-xl shadow-slate-700/10 ring-1 ring-gray-900/5 backdrop-blur dark:bg-slate-900/50 md:mx-auto md:max-w-3xl lg:max-w-4xl lg:pb-28 lg:pt-16">
+		<div className="relative my-8 w-full rounded-sm  bg-slate-100/40 px-6 py-12 shadow-xl shadow-slate-700/10 ring-1 ring-slate-900/5 backdrop-blur dark:bg-slate-900/50 md:mx-auto md:max-w-3xl lg:max-w-4xl lg:pb-28 lg:pt-16">
 			<main className="prose dark:prose-invert prose-slate lg:prose-lg relative mx-auto">
 				<h1>
 					<span className="[-webkit-text-fill-color:rgba(0,0,0,0.1)] [-webkit-text-stroke-color:rgba(0,0,0,0.4)] [-webkit-text-stroke-width:1px] dark:[-webkit-text-fill-color:rgba(255,255,255,0.4)]">
@@ -17,7 +17,7 @@ export default function Home() {
 					<span className="text-slate-600 dark:text-slate-400">Technology</span>
 				</h1>
 
-				<blockquote>
+				<blockquote className="border-l-slate-100/40">
 					<p>Success is sometimes the outcome of a whole string of failures.</p>
 
 					<footer>&mdash; Vincent Van Gogh</footer>
