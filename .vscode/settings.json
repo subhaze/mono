@@ -17,5 +17,10 @@
  "eslint.workingDirectories": [
    "apps",
    "packages"
- ],
+],
+"cSpell.words": [
+  "itsnotthecereal",
+  "notthecereal",
+  "Trix"
+],
 }

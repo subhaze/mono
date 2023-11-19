@@ -4,17 +4,20 @@ action-local:
 app:
 - 'apps/**'
 
-package:
-- 'packages/**'
-
 asocial-network:
-- 'packages/asocial-network/**'
+- 'apps/asocial-network/**'
 
 belowthefold-rocks:
-- 'packages/belowthefold-rocks/**'
+- 'apps/belowthefold-rocks/**'
 
 faulty-technology:
-- 'packages/faulty-technology/**'
+- 'apps/faulty-technology/**'
+
+itsnotthecereal-life:
+- 'apps/itsnotthecereal-life/**'
+
+package:
+- 'packages/**'
 
 tailwind-global:
 - 'packages/tailwind-config/**'
