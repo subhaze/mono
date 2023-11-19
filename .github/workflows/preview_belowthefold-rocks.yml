@@ -38,7 +38,7 @@ jobs:
       - name: Deploy preview
         uses: ./.github/actions/vercel
         with:
-          working-directory: ./apps/$PROJECT_SLUG
+          working-directory: ./apps/${{ env.PROJECT_SLUG }}
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-scope: subhaze
           vercel-project: ${{ env.PROJECT_SLUG }}
