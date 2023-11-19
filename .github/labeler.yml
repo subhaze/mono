@@ -16,6 +16,9 @@ belowthefold-rocks:
 faulty-technology:
 - 'packages/faulty-technology/**'
 
+itsnotthecereal-life:
+- 'packages/itsnotthecereal-life/**'
+
 tailwind-global:
 - 'packages/tailwind-config/**'
 

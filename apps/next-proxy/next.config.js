@@ -13,6 +13,16 @@ module.exports = {
 					has: [{ type: "host", value: "asocial-network.127local.host" }],
 					destination: "http://localhost:3001/:path*",
 				},
+				{
+					source: "/:path*",
+					has: [{ type: "host", value: "belowthefold-rocks.127local.host" }],
+					destination: "http://localhost:3002/:path*",
+				},
+				{
+					source: "/:path*",
+					has: [{ type: "host", value: "notthecereal-life.127local.host" }],
+					destination: "http://localhost:3003/:path*",
+				},
 			],
 		};
 	},
