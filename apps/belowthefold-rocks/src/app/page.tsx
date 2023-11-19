@@ -3,7 +3,7 @@ import Image from "next/image";
 import rocks from "../../public/rocks.jpg";
 
 export const metadata: Metadata = {
-	title: "Docs - Turborepo Example",
+	title: "Below the fold, rocks.",
 };
 
 export default function Home() {
