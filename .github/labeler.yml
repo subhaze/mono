@@ -1,0 +1,27 @@
+action-local:
+- '.github/actions/**'
+
+app:
+- 'apps/**'
+
+package:
+- 'packages/**'
+
+asocial-network:
+- 'packages/asocial-network/**'
+
+belowthefold-rocks:
+- 'packages/belowthefold-rocks/**'
+
+faulty-technology:
+- 'packages/faulty-technology/**'
+
+tailwind-global:
+- 'packages/tailwind-config/**'
+
+typescript-global:
+- 'packages/tsconfig/**'
+
+labeler-changes:
+- '.github/labeler.yml'
+- '.github/workflows/labeler.yml'
