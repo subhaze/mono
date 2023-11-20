@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import rocks from "../../public/rocks.jpg";
+import rocks from "../assets/rocks.webp";
 
 export const metadata: Metadata = {
 	title: "Below the fold, rocks.",
