@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import trix from "../assets/not-life-cereal.jpg";
+import trix from "../assets/not-life-cereal.webp";
 
 export const metadata: Metadata = {
 	title: "It's not the cereal life, so what is it?",
