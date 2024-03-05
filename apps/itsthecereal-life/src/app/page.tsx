@@ -3,7 +3,7 @@ import Image from "next/image";
 import trix from "../assets/life-cereal.webp";
 
 export const metadata: Metadata = {
-	title: "It's not the cereal life, so what is it?",
+	title: "It's what Mikey likes!",
 };
 
 export default function Home() {
