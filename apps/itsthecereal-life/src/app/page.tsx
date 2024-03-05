@@ -13,7 +13,7 @@ export default function Home() {
 				<Image
 					className="block h-full w-full bg-white object-contain"
 					src={trix.src}
-					alt="picture of Trix cereal box"
+					alt="picture of Life cereal box"
 					width={trix.width}
 					height={trix.height}
 				/>
