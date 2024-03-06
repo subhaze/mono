@@ -46,9 +46,9 @@ const UselessToday = ({
 				<span className="inline-block self-center justify-self-center">
 					Who?
 					<br />
-					Ohhhh, you mean ol <b className="font-bold">Tee Dub</b>? Yeah.
+					Oh! You mean ol <b className="font-bold">Tee Dub</b>? Yeah.
 					<br />
-					Weeeelllll, if he&apos;s got GPT going, then maaaayyybe not quite as
+					Well... if he&apos;s got GPT going, then ...maybe not quite as
 					useless...
 				</span>
 			</div>
@@ -58,7 +58,8 @@ const UselessToday = ({
 		return (
 			<div className="flex justify-center align-middle">
 				<span className="inline-block self-center justify-self-center">
-					HAHAHAHA, you... had to ask?
+					{`Nah, not at all! ....wait, you said "Rhyne" didn't you?
+					...eh`}
 				</span>
 			</div>
 		);
