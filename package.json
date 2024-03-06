@@ -14,7 +14,8 @@
 		"postcss-preset-env": "^9.1.1",
 		"prettier": "^3.0.1",
 		"prettier-plugin-tailwindcss": "^0.5.2",
-		"turbo": "latest"
+		"turbo": "latest",
+		"vercel": "^33.2.0"
 	},
 	"packageManager": "npm@9.6.7",
 	"workspaces": [
