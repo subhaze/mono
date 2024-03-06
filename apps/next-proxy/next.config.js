@@ -20,8 +20,23 @@ module.exports = {
 				},
 				{
 					source: "/:path*",
-					has: [{ type: "host", value: "notthecereal-life.127local.host" }],
+					has: [{ type: "host", value: "itsnotthecereal-life.127local.host" }],
 					destination: "http://localhost:3003/:path*",
+				},
+				{
+					source: "/:path*",
+					has: [{ type: "host", value: "itsthecereal-life.127local.host" }],
+					destination: "http://localhost:3004/:path*",
+				},
+				{
+					source: "/:path*{/}?",
+					has: [
+						{
+							type: "host",
+							value: "(?<is>.*)-useless-today.127local.host",
+						},
+					],
+					destination: "http://localhost:3005/:path*?is=:is",
 				},
 			],
 		};
